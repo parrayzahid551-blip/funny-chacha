@@ -5,14 +5,14 @@ import streamlit as st
 HF_TOKEN = os.getenv("HF_TOKEN") or st.secrets["HF_TOKEN"]
 
 client = InferenceClient(
-    model="google/flan-t5-large",
+    model="distilgpt2",
     token=HF_TOKEN
 )
 
-def generate_response(prompt, temperature=0.9):
+def generate_response(prompt, temperature=0.7):
     response = client.text_generation(
         prompt,
-        max_new_tokens=200,
+        max_new_tokens=150,
         temperature=temperature
     )
     return response
