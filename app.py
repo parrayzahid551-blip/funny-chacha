@@ -39,6 +39,15 @@ for msg in get_messages():
 
 # Chat input
 if user_input := st.chat_input("Talk to Chacha..."):
+
+    # ✅ Define banned words FIRST
+    banned_words = ["hate", "kill", "idiot", "stupid"]
+
+    # ✅ Safety filter
+    if any(word in user_input.lower() for word in banned_words):
+        st.warning("Chacha refuses to go there 😌 Let's keep it friendly!")
+        st.stop()
+
     add_message("user", user_input)
 
     with st.chat_message("user"):
@@ -52,8 +61,6 @@ if user_input := st.chat_input("Talk to Chacha..."):
 
     with st.chat_message("assistant"):
         st.markdown(response)
-        banned_words = ["hate", "kill", "idiot"]
-
 if any(word in user_input.lower() for word in banned_words):
     st.warning("Chacha refuses to go there 😌 Let's keep it friendly!")
     st.stop()
