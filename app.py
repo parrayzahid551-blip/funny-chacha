@@ -61,6 +61,3 @@ if user_input := st.chat_input("Talk to Chacha..."):
 
     with st.chat_message("assistant"):
         st.markdown(response)
-if any(word in user_input.lower() for word in banned_words):
-    st.warning("Chacha refuses to go there 😌 Let's keep it friendly!")
-    st.stop()
