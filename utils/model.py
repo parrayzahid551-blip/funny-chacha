@@ -1,10 +1,9 @@
 import os
 from huggingface_hub import InferenceClient
-from dotenv import load_dotenv
+import streamlit as st
+import os
 
-load_dotenv()
-
-HF_TOKEN = os.getenv("HF_TOKEN")
+HF_TOKEN = os.getenv("HF_TOKEN") or st.secrets["HF_TOKEN"]
 
 client = InferenceClient(
     model="HuggingFaceH4/zephyr-7b-beta",
